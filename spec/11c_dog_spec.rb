@@ -35,17 +35,20 @@ end
 
 describe Dog do
   # Create a subject with your choice of dog name and optional breed/color.
-
+  subject(:ruffus) { described_class.new('Ruffus', 'cone', 'golden') }
   # Write a test using the second shared_example to test that dog responds to
   # talk ('WOOF!').
-  context '' do
+  context 'when Dog is a child class of Pet' do
+    include_examples 'base class method name'
   end
 
   # remove the 'x' before running this test
-  xit 'is not barking' do
+  it 'is not barking' do
+    expect(ruffus.barking?).to be_falsy
   end
 
   # remove the 'x' before running this test
-  xit 'is sleeping' do
+  it 'is sleeping' do
+    expect(ruffus.sleeping?).to be_truthy
   end
 end
